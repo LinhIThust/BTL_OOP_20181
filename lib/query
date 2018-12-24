@@ -1,0 +1,64 @@
+----------------------------------------------------------------------10 Câu truy vấn đơn giản---------------------------------------------------------------------------------
+1,Đưa ra thông tin nhung ngươời tên "Linh"
+ select ?id ?p ?d ?l ?t where{?id rela:name ?n;rela:position ?p;rela:description ?d;rela:source ?so.?so rela:link_source ?l ;rela:time_source ?t.FILTER regex(?n,"Linh").}
+
+2 đưa ra thông tin sự kiện "ra mắt Iphone 8"
+ select ?id ?n ?t ?d ?ls ?ts where{?id rela:name ?n;rela:time ?t;rela:description ?d;rela:source ?so.?so rela:link_source ?ls ;rela:time_source ?ts.FILTER regex(?n,"ra mắt Iphone 8").} LIMIT 10
+
+3 Cong ty SS có cơ quan ở những nơi nào?
+ select ?id ?n ?hq where{?id rela:name ?n;rela:headQ ?hq.FILTER regex(?n,"Samsung").}
+ 
+4 thông tin về thành phố đà nẵng?
+ select ?id ?n ?d ?c where{?id rela:name ?n; rela:description ?d;rela:in_country ?c.FILTER regex(?n,"Đà Nẵng").}
+ 
+5 thông tin về Việt nam
+select ?id ?n ?d where{?id rela:name ?n; rela:description ?d.FILTER regex(?n,"Việt Nam").}
+
+6 lấy thông tin của Country2018-12-22T17:12:30.76419796
+ select ?id ?n ?d ?l ?t where{?id rela:name ?n;rela:description ?d;rela:source ?so.?so rela:link_source ?l ;rela:time_source ?t.FILTER regex(?id,"Country2018-12-22T17:12:30.76419796").}
+
+7 đưa ra thông công việc của những người tên "Ronaldo"
+select ?id ?n ?p  where {?id rela:name ?n;rela:position ?p.FILTER regex(?n,"Ronaldo").}
+
+8 đưa ra những người tổ chức EVENT "Ngày hội hiến máu"
+select ?idP ?n where {?idP rela:name ?n; rela:organize ?e.?e rela:name ?nE.FILTER regex(?nE,"Ngày hội hiến máu")}
+
+9 Những địa điểm mà ChiPu đã đi diễn
+select ?l where {?idP rela:name ?n;rela:visit ?l.FILTER regex(?n,"ChiPu").}
+
+10 Chung kết Wwc từng diễn ra ở nhưng đâu
+select ?l where {?e rela:name ?n;rela:place ?l.FILTER regex(?n, "Chung kết WC").}
+
+
+-----------------------------------------------------------------------------10 Câu nâng cao----------------------------------------------------------------------------------------
+
+1,Các SỰ KIỆN diễn tại Hàn Quốc năm 2018
+select * where {?e rela:name ?n;rela:time ?t;rela:place ?p.?p rela:name ?np.FILTER regex(?t,"2018").FILTER regex(?np,"Hàn Quốc").}
+
+2 Ronaldo tham_gia những SỰ Kiện nào năm 2017
+select * where {?s rela:name ?n;rela:stated ?e.?e rela:name ?ne;rela:time ?t.FILTER regex(?n,"Ronaldo").FILTER regex(?t,"2017").}
+
+3,kể tên 5 Tổ Chức(nếu được) mà MESSI thành_lập ra
+select * where{?s rela:name ?n;rela:establish ?o.?o rela:name ?nO.FILTER regex(?n ,"Messi")}LIMIT 5
+
+4,cong ty FPT có hợp_tác với những tổ_chức nào
+select DISTINCT *where{?s rela:name ?no1;rela:co_operate ?o2.?o2 rela:name ?no2.FILTER regex(?no1,"FPT")}
+
+5,những thông tin trích rút từ trang kenh14.com vào năm 2013
+select  * where{?e rela:name ?n;rela:source ?s.?s rela:link_source ?ns.?s rela:time_source ?nt.FILTER regex(?ns,"kenh14.com")FILTER regex(?nt,"2013")}
+
+6, kể tên những cặp bố_con đến từ việt nam
+select * where{?p rela:name ?np;rela:from ?c;rela:has_child ?s.?s rela:name ?ns.FILTER regex(?c,"Việt Nam")}
+
+7.Số sự kiện diễn ra ở Mỹ trong năm 2018
+select count(?e) as ?NumberEvent where {?e rela:place ?c;rela:time ?t.?c rela:name ?nc.FILTER regex(?nc, "Mỹ").FILTER regex(?t ,"2018")}
+
+8,Kể tên những nước là hàng_xóm của nhau
+select * where {?c1 rela:name ?n1;rela:next_to ?c2.?c2 rela:name ?n2} 
+
+9,Những sự kiện sau sự kiện "ra mắt iphone 8"
+select * where {?e1 rela:after ?e2;rela:name ?n.?e2 rela:name ?n2.FILTER regex(?n2,"ra mắt Iphone 8")}
+
+10 "Katty Perry" đã bảo_vệ những sự_kiện nào trong năm 2018
+select * where{?s rela:name ?n;rela:protect ?e.?e rela:name ?ne;rela:time ?t.FILTER regex(?t,"2018").FILTER regex(?n,"Katty Perry")}
+

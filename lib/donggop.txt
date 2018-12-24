@@ -1,0 +1,7 @@
+﻿ĐÓNG GÓP
+--------------------------------------------------
+1,Linh:	Sinh dữ liệu+Thao tác với database(Đẩy dữ liệu +Truy vấn)+Vẽ biểu đồ UML  30%
+4,Huy :	Tạo nguồn và sinh dữ liệu + Tìm hiểu RDF4J+Virtuoso 			25%
+2,Dũng:	Kiểm thử +làm báo cáo :						20%
+3,Hùng:	Kiểm thử +làm báo cáo :						20%
+5,Khoái : 									05%
