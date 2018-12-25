@@ -9,7 +9,7 @@ import entities.Person;
 import utility.FileUtil;
 
 public class CreateLocaltion implements CreateData {
-	private static String filePath = "lib\\Data\\Localtion\\";
+	private static String filePath = "lib\\Data\\Location\\";
 	private String[] labelP = FileUtil.getListFromFile(filePath + "Label");
 	private String[] descriptionP = FileUtil.getListFromFile(filePath + "Description");
 	private String[] country = FileUtil.getListFromFile(filePath + "Country");
@@ -22,7 +22,7 @@ public class CreateLocaltion implements CreateData {
 
 	@Override
 	public Entity get() {
-		String id = "Localtion" + java.time.LocalDateTime.now().toString();
+		String id = "Localtion"+rd.nextInt()+ java.time.LocalDateTime.now().toString();
 		String label = this.labelP[rd.nextInt(lengthLabelP)];
 		String description = this.descriptionP[rd.nextInt(lengthDesP)];
 		String country = this.country[rd.nextInt(lengthCou)];

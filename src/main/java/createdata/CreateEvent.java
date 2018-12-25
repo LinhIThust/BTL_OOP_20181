@@ -19,7 +19,7 @@ public class CreateEvent implements CreateData {
 
 	@Override
 	public Entity get() {
-		String id = "Event" + java.time.LocalDateTime.now().toString();
+		String id = "Event" +rd.nextInt()+java.time.LocalDateTime.now().toString();
 		String label = this.labelP[rd.nextInt(lengthLabelP)];
 		String description = this.descriptionP[rd.nextInt(lengthDesP)];
 		String dateTime = this.date[rd.nextInt(lengthDate)];

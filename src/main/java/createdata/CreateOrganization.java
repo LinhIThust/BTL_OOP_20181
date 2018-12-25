@@ -21,7 +21,7 @@ public class CreateOrganization implements CreateData {
 
 	@Override
 	public Entity get() {
-		String id = "Organization" + java.time.LocalDateTime.now().toString();
+		String id = "Organization" +rd.nextInt()+ java.time.LocalDateTime.now().toString();
 		String label = this.labelP[rd.nextInt(lengthLabelP)];
 		String description = this.descriptionP[rd.nextInt(lengthDesP)];
 		String head = this.headQ[rd.nextInt(lengthHeadQ)];

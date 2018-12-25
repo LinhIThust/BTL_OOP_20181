@@ -20,7 +20,7 @@ public class CreatePerson implements CreateData {
 
 	@Override
 	public Entity get() {
-		String id = "Person" + java.time.LocalDateTime.now().toString();
+		String id = "Person" +rd.nextInt()+ java.time.LocalDateTime.now().toString();
 		String label = this.labelP[rd.nextInt(lengthLabelP)];
 		String description = this.descriptionP[rd.nextInt(lengthDesP)];
 		String position = this.positionP[rd.nextInt(lengthPosP)];

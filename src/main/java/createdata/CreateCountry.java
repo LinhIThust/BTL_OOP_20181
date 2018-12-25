@@ -18,7 +18,7 @@ public class CreateCountry implements CreateData {
 
 	@Override
 	public Entity get() {
-		String id = "Country" + java.time.LocalDateTime.now().toString();
+		String id = "Country" + rd.nextInt()+java.time.LocalDateTime.now().toString();
 		String label = this.labelP[rd.nextInt(lengthLabelP)];
 		String description = this.descriptionP[rd.nextInt(lengthDesP)];
 		Country c = new Country(id, label, description, new CreateCitationOrigin().get());

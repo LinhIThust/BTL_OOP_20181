@@ -9,7 +9,7 @@
  select ?id ?n ?hq where{?id rela:name ?n;rela:headQ ?hq.FILTER regex(?n,"Samsung").}
  
 4 thông tin về thành phố đà nẵng?
- select ?id ?n ?d ?c where{?id rela:name ?n; rela:description ?d;rela:in_country ?c.FILTER regex(?n,"Đà Nẵng").}
+ select ?id ?n ?d ?c where{?id rela:name ?n; rela:description ?d;rela:in_country ?c.}
  
 5 thông tin về Việt nam
 select ?id ?n ?d where{?id rela:name ?n; rela:description ?d.FILTER regex(?n,"Việt Nam").}
@@ -21,7 +21,7 @@ select ?id ?n ?d where{?id rela:name ?n; rela:description ?d.FILTER regex(?n,"Vi
 select ?id ?n ?p  where {?id rela:name ?n;rela:position ?p.FILTER regex(?n,"Ronaldo").}
 
 8 đưa ra những người tổ chức EVENT "Ngày hội hiến máu"
-select ?idP ?n where {?idP rela:name ?n; rela:organize ?e.?e rela:name ?nE.FILTER regex(?nE,"Ngày hội hiến máu")}
+select ?idP ?n where {?idP rela:name ?n; rela:organize ?e.?e rela:name ?nE.FILTER regex(?nE,"Ngày hội hiến máu").FILTER regex(?idP,"Person")}
 
 9 Những địa điểm mà ChiPu đã đi diễn
 select ?l where {?idP rela:name ?n;rela:visit ?l.FILTER regex(?n,"ChiPu").}
@@ -39,7 +39,7 @@ select * where {?e rela:name ?n;rela:time ?t;rela:place ?p.?p rela:name ?np.FILT
 select * where {?s rela:name ?n;rela:stated ?e.?e rela:name ?ne;rela:time ?t.FILTER regex(?n,"Ronaldo").FILTER regex(?t,"2017").}
 
 3,kể tên 5 Tổ Chức(nếu được) mà MESSI thành_lập ra
-select * where{?s rela:name ?n;rela:establish ?o.?o rela:name ?nO.FILTER regex(?n ,"Messi")}LIMIT 5
+select DISTINCT ?o where{?s rela:name ?n;rela:establish ?o.?o rela:name ?nO.FILTER regex(?n ,"Messi")}LIMIT 5
 
 4,cong ty FPT có hợp_tác với những tổ_chức nào
 select DISTINCT *where{?s rela:name ?no1;rela:co_operate ?o2.?o2 rela:name ?no2.FILTER regex(?no1,"FPT")}
